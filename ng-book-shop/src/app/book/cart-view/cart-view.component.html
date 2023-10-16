@@ -1,0 +1,25 @@
+
+<table class="table table-striped my-5">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let b of books">
+        <td>{{ b.id }}</td>
+        <td>{{ b.title }}</td>
+        <td>{{ b.author }}</td>
+        <td>{{ b.price | currency }}</td>
+        <td><input type="text"  class="form-control" [(ngModel)]="b.quantity" ></td>
+        <td>{{ (b?.price! * b?.quantity!) | currency }}</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 *ngIf="(sum | async ) as totalSum">Sum :: {{ totalSum | currency }}</h3>
